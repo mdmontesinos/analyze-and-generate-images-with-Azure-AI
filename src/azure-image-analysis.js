@@ -1,6 +1,6 @@
 export function analyzeImage(imageUrl, endpoint, key) {
     return fetch(
-        `${endpoint}/vision/v3.1/analyze?visualFeatures=Categories,Description,Color&details=Landmarks&language=en`,
+        `${endpoint}/vision/v3.1/analyze?visualFeatures=Categories,Description,Color,Objects,Tags&language=en`,
         {
             method: "POST",
             headers: {
@@ -16,6 +16,7 @@ export function analyzeImage(imageUrl, endpoint, key) {
             return response.json();
         })
         .catch((error) => {
-            return error.json();
+            console.log(error);
+            return "An error has ocurred";
         });
 }
